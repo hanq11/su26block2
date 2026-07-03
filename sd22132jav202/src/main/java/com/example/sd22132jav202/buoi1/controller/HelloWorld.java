@@ -16,6 +16,6 @@ public class HelloWorld {
     public String helloWorld(Model model) {
         model.addAttribute("ten", request.getParameter("ten"));
         model.addAttribute("truong", "FPOLY");
-        return "buoi1/hello-world";
+        return "/buoi1/hello-world";
     }
 }
