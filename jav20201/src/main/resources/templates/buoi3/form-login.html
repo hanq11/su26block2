@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,9 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+    [[${message}]]
+    <br>
     Dang nhap
-    <form action="/buoi3/login" method="post">
-        username: <input type="text" name="username"> <br>
+    <form th:object="${login}" action="/buoi3/login" method="post">
+        username: <input th:field="*{username}"> <i th:errors="*{username}"></i> <br>
         password: <input type="text" name="password"> <br>
         remember: <input type="checkbox" name="remember"> <br>
         <button>Login</button>

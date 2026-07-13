@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,5 +12,33 @@
     <p th:text="${username}"></p>
     <p th:text="${password}"></p>
     <p th:text="${remember == true ? 'Co nho' : 'Khong nho'}"></p>
+
+    <p>Truy cap bien trong object</p>
+    <p>Username: [[${login.username}]]</p>
+    <ul th:object="${login}">
+        <li th:text="*{username}"></li>
+        <li th:text="*{password}"></li>
+        <li th:text="*{remember}"></li>
+    </ul>
+    <a th:href="@{|/buoi3/show-form|}">Tro ve trang dang nhap</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>username</th>
+                <th>password</th>
+                <th>remember</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="taiKhoan : ${listTaiKhoan}">
+                <tr>
+                    <td th:text="${taiKhoan.username}"></td>
+                    <td th:text="${taiKhoan.password}"></td>
+                    <td th:text="${taiKhoan.remember}"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
 </body>
 </html>
