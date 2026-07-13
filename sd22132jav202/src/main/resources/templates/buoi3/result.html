@@ -13,5 +13,34 @@
     <p th:text="${password}"></p>
     <p th:text="${remember == true ? 'Co nho' : 'Khong nho'}"></p>
 
+    <p>Truyen object</p>
+    <p>Truy cập thông tin object: [[${login.username}]]</p>
+    <p>Truy cap su dung th:object</p>
+    <ul th:object="${login}">
+        <li th:text="*{username}"></li>
+        <li th:text="*{password}"></li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>username</th>
+                <th>password</th>
+                <th>remember</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="tk : ${listTaiKhoan}">
+                <tr>
+                    <td th:text="${tk.username}"></td>
+                    <td th:text="${tk.password}"></td>
+                    <td th:text="${tk.remember}"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+
+    <a th:href="@{|/buoi3/show-form|}">Tro ve login</a>
+
 </body>
 </html>
