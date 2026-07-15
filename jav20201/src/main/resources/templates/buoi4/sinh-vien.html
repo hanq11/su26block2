@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Day la trang sinh vien</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Ten</th>
+        <th>Diem</th>
+        <th>Gioi tinh</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="sv : ${listSinhVien}">
+        <tr>
+            <td th:text="${sv.id}"></td>
+            <td th:text="${sv.ten}"></td>
+            <td th:text="${sv.diem}"></td>
+            <td th:text="${sv.gioiTinh == true ? 'Nam' : 'Nu'}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
