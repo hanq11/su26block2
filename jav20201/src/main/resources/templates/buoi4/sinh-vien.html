@@ -22,6 +22,7 @@
             <td th:text="${sv.ten}"></td>
             <td th:text="${sv.diem}"></td>
             <td th:text="${sv.gioiTinh == true ? 'Nam' : 'Nu'}"></td>
+            <td><a th:href="@{|/xoa?id=${sv.id}|}"></a></td>
         </tr>
     </th:block>
     </tbody>
