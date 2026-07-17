@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Sua sinh vien:
+    <form action="/buoi4/sua" method="post">
+        id: <input type="text" name="id" th:value="${sinhVien.id}"> <br>
+        ten: <input type="text" name="ten" th:value="${sinhVien.ten}"> <br>
+        diem: <input type="text" name="diem" th:value="${sinhVien.diem}"> <br>
+        gioi tinh:
+        Nam <input type="radio" name="gioiTinh" value="true" th:checked="${sinhVien.gioiTinh}">
+        Nu <input type="radio" name="gioiTinh" value="false" th:checked="${!sinhVien.gioiTinh}">
+        <br>
+        <button>Sua</button>
+    </form>
+</body>
+</html>

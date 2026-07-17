@@ -8,6 +8,18 @@
     <title>Document</title>
 </head>
 <body>
+    Them sinh vien:
+    <form action="/buoi4/them" method="post">
+        id: <input type="text" name="id"> <br>
+        ten: <input type="text" name="ten"> <br>
+        diem: <input type="text" name="diem"> <br>
+        gioi tinh:
+            Nam <input type="radio" name="gioiTinh" value="true">
+            Nu <input type="radio" name="gioiTinh" value="false">
+        <br>
+        <button>Them</button>
+    </form>
+    <br>
     Bang thong tin:
     <table>
         <thead>
@@ -16,6 +28,7 @@
                 <th>Ten</th>
                 <th>Diem</th>
                 <th>Gioi tinh</th>
+                <th>Hanh dong</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +38,10 @@
                     <td th:text="${sv.ten}"></td>
                     <td th:text="${sv.diem}"></td>
                     <td th:text="${sv.gioiTinh == true ? 'Nam' : 'Nu'}"></td>
+                    <td>
+                        <a th:href="@{|/buoi4/view-update/${sv.id}|}">View update</a>
+                        <a th:href="@{|/buoi4/xoa?id=${sv.id}|}">Xoa</a>
+                    </td>
                 </tr>
             </th:block>
         </tbody>
