@@ -25,4 +25,36 @@ public class SinhVienService {
     public void xoaSinhVien(Integer id) {
         listSinhVien.removeIf(sinhVien -> sinhVien.getId() == id);
     }
+
+    public void themSinhVien(SinhVien sinhVien) {
+        listSinhVien.add(sinhVien);
+    }
+
+    public SinhVien getById(Integer id) {
+        for (SinhVien sinhVien: listSinhVien) {
+            if(sinhVien.getId() == id) {
+                return sinhVien;
+            }
+        }
+        return null;
+    }
+
+    public void suaSinhVien(SinhVien sinhVien) {
+        // Cach 1
+        int idCanSua = -1;
+        for (int i = 0; i < listSinhVien.size(); i++) {
+            if(listSinhVien.get(i).getId() == sinhVien.getId()) {
+                idCanSua = i;
+            }
+        }
+        listSinhVien.set(idCanSua, sinhVien);
+        // Cach 2
+//        for (SinhVien sv: listSinhVien) {
+//            if(sv.getId() == sinhVien.getId()) {
+//                sv.setTen(sinhVien.getTen());
+//                sv.setDiem(sinhVien.getDiem());
+//                sv.setGioiTinh(sinhVien.getGioiTinh());
+//            }
+//        }
+    }
 }
