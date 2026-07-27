@@ -8,6 +8,24 @@
     <title>Document</title>
 </head>
 <body>
+    Them san pham:
+    <form action="/buoi9/them" method="post">
+        Ten: <input type="text" name="ten"> <br>
+        Gia: <input type="text" name="gia"> <br>
+        Con bao hanh:
+        Co <input type="radio" name="conBaoHanh" value="true">
+        Khong <input type="radio" name="conBaoHanh" value="false">
+        <br>
+        Danh muc:
+            <select name="danhMuc">
+                <th:block th:each="dm : ${listDanhMuc}">
+                    <option th:value="${dm.id}" th:text="${dm.ten}"></option>
+                </th:block>
+            </select>
+        <br>
+        <button>Save</button>
+    </form>
+    <br>
     Thong tin san pham:
     <table>
         <thead>
@@ -28,6 +46,10 @@
                 <td th:text="${sp.gia}"></td>
                 <td th:text="${sp.conBaoHanh}"></td>
                 <td th:text="${sp.danhMuc.ten}"></td>
+                <td>
+                    <a th:href="@{|/buoi9/view-update/${sp.id}|}">View update</a>
+                    <a th:href="@{|/buoi9/xoa?id=${sp.id}|}">Xoa</a>
+                </td>
             </tr>
         </th:block>
         </tbody>
