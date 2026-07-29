@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Sua san pham:
+    <form action="/buoi9/sua" method="post">
+        id: <input type="text" name="id" th:value="${sp.id}"> <br>
+        ten: <input type="text" name="ten" th:value="${sp.ten}"> <br>
+        gia: <input type="text" name="gia" th:value="${sp.gia}"> <br>
+        con bao hanh:
+        con: <input type="radio" name="conBaoHanh" value="true" th:checked="${sp.conBaoHanh}">
+        khong con: <input type="radio" name="conBaoHanh" value="false" th:checked="${!sp.conBaoHanh}">
+        <br>
+        danh muc:
+        <select name="danhMuc">
+            <th:block th:each="dm : ${listDanhMuc}">
+                <option th:value="${dm.id}" th:text="${dm.ten}" th:selected="${sp.danhMuc.id == dm.id}"></option>
+            </th:block>
+        </select>
+        <br>
+        <button>Save</button>
+    </form>
+</body>
+</html>
