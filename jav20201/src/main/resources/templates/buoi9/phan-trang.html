@@ -8,30 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    Tim kiem san pham theo ten:
-    <form action="/buoi9/tim-kiem" method="get">
-        Ten: <input type="text" name="ten"> <br>
-        <button>Search</button>
-    </form>
-    <br>
-    Them san pham:
-    <form action="/buoi9/them" method="post">
-        Ten: <input type="text" name="ten"> <br>
-        Gia: <input type="text" name="gia"> <br>
-        Con bao hanh:
-        Co <input type="radio" name="conBaoHanh" value="true">
-        Khong <input type="radio" name="conBaoHanh" value="false">
-        <br>
-        Danh muc:
-            <select name="danhMuc">
-                <th:block th:each="dm : ${listDanhMuc}">
-                    <option th:value="${dm.id}" th:text="${dm.ten}"></option>
-                </th:block>
-            </select>
-        <br>
-        <button>Save</button>
-    </form>
-    <br>
     Thong tin san pham:
     <table>
         <thead>
@@ -45,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <th:block th:each="sp : ${listSanPham}">
+        <th:block th:each="sp : ${listSanPham.getContent()}">
             <tr>
                 <td th:text="${sp.id}"></td>
                 <td th:text="${sp.ten}"></td>
@@ -60,5 +36,7 @@
         </th:block>
         </tbody>
     </table>
+    <a th:href="@{|/buoi9/phan-trang?page=${listSanPham.getNumber() - 1}|}">Previous</a>
+    <a th:href="@{|/buoi9/phan-trang?page=${listSanPham.getNumber() + 1}|}">Next</a>
 </body>
 </html>

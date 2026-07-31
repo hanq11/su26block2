@@ -6,6 +6,8 @@ import com.example.jav20201.buoi9.repository.DanhMucRepository;
 import com.example.jav20201.buoi9.repository.SanPhamRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,5 +56,38 @@ public class Buoi9Controller {
     public String sua(SanPham sanPham) {
         sanPhamRepository.save(sanPham);
         return "redirect:/buoi9/hien-thi";
+    }
+
+    @GetMapping("/tim-kiem")
+    public String timKiemTheoTen(@RequestParam("ten") String ten, Model model) {
+        model.addAttribute("listSanPham", sanPhamRepository.findSanPhamsByTenContains(ten));
+        model.addAttribute("listDanhMuc", danhMucRepository.findAll());
+        return "/buoi9/hien-thi";
+    }
+
+    @GetMapping("/tim-kiem-sql")
+    public String timKiemSql(@RequestParam("min") Float min, @RequestParam("max") Float max, Model model) {
+        model.addAttribute("listSanPham", sanPhamRepository.timKiemTheoKhoangGiaSQL(min, max));
+        model.addAttribute("listDanhMuc", danhMucRepository.findAll());
+        return "/buoi9/hien-thi";
+    }
+
+    @GetMapping("/tim-kiem-jpql")
+    public String timKiemJpql(@RequestParam("min") Float min, @RequestParam("max") Float max, Model model) {
+        model.addAttribute("listSanPham", sanPhamRepository.timKiemTheoKhoangGiaJPQL(min, max));
+        model.addAttribute("listDanhMuc", danhMucRepository.findAll());
+        return "/buoi9/hien-thi";
+    }
+
+    @GetMapping("/phan-trang")
+    public String phanTrang(
+            @RequestParam(name = "page", defaultValue = "0") Integer page,
+            Model model
+    ) {
+        int pageSize = 2;
+        Pageable pageable = PageRequest.of(page, pageSize);
+        model.addAttribute("listSanPham", sanPhamRepository.findAll(pageable));
+        model.addAttribute("listDanhMuc", danhMucRepository.findAll());
+        return "/buoi9/phan-trang";
     }
 }
