@@ -8,9 +8,7 @@ package com.example.tutorjav202.buoi1.entity;
 //        GO
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor

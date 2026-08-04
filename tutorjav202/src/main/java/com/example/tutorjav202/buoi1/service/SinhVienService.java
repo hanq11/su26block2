@@ -1,17 +1,22 @@
 package com.example.tutorjav202.buoi1.service;
 
 import com.example.tutorjav202.buoi1.entity.SinhVien;
+import com.example.tutorjav202.buoi1.request.SinhVienRequest;
+import com.example.tutorjav202.buoi1.response.SinhVienResponse;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface SinhVienService {
-    public List<SinhVien> getAll();
+    public List<SinhVienResponse> getAll();
 
-    public SinhVien getById(Integer id);
+    public SinhVienResponse getById(Integer id);
 
-    public void addSinhVien(SinhVien sinhVien);
+    public void addSinhVien(SinhVienRequest sinhVienRequest);
 
-    public void updateSinhVien(SinhVien sinhVien);
+    public void updateSinhVien(SinhVienRequest sinhVienRequest);
 
     public void deleteSinhVien(Integer id);
+
+    public Page phanTrang(Integer pageNumber, Integer pageSize);
 }
