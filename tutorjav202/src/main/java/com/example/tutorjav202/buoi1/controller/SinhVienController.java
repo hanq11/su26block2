@@ -4,6 +4,7 @@ import com.example.tutorjav202.buoi1.entity.SinhVien;
 import com.example.tutorjav202.buoi1.request.SinhVienRequest;
 import com.example.tutorjav202.buoi1.response.SinhVienResponse;
 import com.example.tutorjav202.buoi1.service.SinhVienService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,12 @@ public class SinhVienController {
     }
 
     @PostMapping("/them")
-    public void them(@RequestBody SinhVienRequest sinhVienRequest) {
+    public void them(@RequestBody @Valid SinhVienRequest sinhVienRequest) {
         sinhVienService.addSinhVien(sinhVienRequest);
     }
 
     @PutMapping("/sua")
-    public void sua(@RequestBody SinhVienRequest sinhVienRequest) {
+    public void sua(@RequestBody @Valid SinhVienRequest sinhVienRequest) {
         sinhVienService.addSinhVien(sinhVienRequest);
     }
 

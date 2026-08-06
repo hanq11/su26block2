@@ -1,0 +1,10 @@
+package com.example.tutorjav202.buoi1.exception;
+
+public class ApiException extends RuntimeException{
+    private final String code;
+
+    public ApiException(String message, String code) {
+        super(message);
+        this.code = code;
+    }
+}
