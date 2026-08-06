@@ -2,6 +2,7 @@ package com.example.tutorjav202.buoi1.service.impl;
 
 import com.example.tutorjav202.buoi1.entity.LopHoc;
 import com.example.tutorjav202.buoi1.entity.SinhVien;
+import com.example.tutorjav202.buoi1.exception.ApiException;
 import com.example.tutorjav202.buoi1.repository.SinhVienRepository;
 import com.example.tutorjav202.buoi1.request.SinhVienRequest;
 import com.example.tutorjav202.buoi1.response.SinhVienResponse;
@@ -46,6 +47,10 @@ public class SinhVienServiceImpl implements SinhVienService {
     }
     @Override
     public void deleteSinhVien(Integer id) {
+//        int a = 8/0;
+        sinhVienRepository.findById(id).orElseThrow(
+                () -> new ApiException("Id khong ton tai", "ID_NOT_FOUND")
+        );
         sinhVienRepository.deleteById(id);
     }
 
